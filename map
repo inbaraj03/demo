@@ -1,0 +1,451 @@
+//#include <iostream>
+//#include <map>
+//#include <string>
+//using namespace std;
+//
+//class Person {
+//private:
+//    string name;
+//    int age;
+//
+//public:
+//    Person(string name, int age) : name(name), age(age) {}
+//
+//    string getName() const { return name; }
+//    int getAge() const { return age; }
+//
+//    void display() const {
+//        cout << "Name: " << name << ", Age: " << age << endl;
+//    }
+//};
+//class DataManager {
+//private:
+//    map<int, Person> dataMap;
+//
+//public:
+//    void addData(int key,Person person) {
+//        //addData(1, Person("Alice", 30));
+//        dataMap.emplace(key, person);
+//    }
+//
+//    bool findData() const {
+//        int key;
+//        cout << "Enther the key for find : ";
+//        cin >> key;
+//        auto it = dataMap.find(key);
+//        if (it != dataMap.end()) {
+//            cout << "Found - ";
+//            it->second.display();
+//            return true;
+//        }
+//        else {
+//            cout << "Key not found" << endl;
+//            return false;
+//        }
+//    }
+//
+//    bool deleteData() {
+//        int key;
+//        cout << "Enther the key for delete : ";
+//        cin >> key;
+//        auto it = dataMap.find(key);
+//        if (it != dataMap.end()) {
+//            dataMap.erase(it);
+//            cout << "Deleted key: " << key << endl;
+//            return true;
+//        }
+//        else {
+//            cout << "Key not found" << endl;
+//            return false;
+//        }
+//    }
+//
+//    void displayData() const {
+//        for (const auto& pair : dataMap) {
+//            cout << "Key: " << pair.first << ", ";
+//            pair.second.display();
+//        }
+//    }
+//};
+//int main() {
+//    DataManager manager;
+//
+//    manager.addData(1, Person("Alice", 30));
+//    manager.addData(2, Person("Bob", 25));
+//    manager.addData(3, Person("Charlie", 28));
+//
+//    manager.displayData();
+//    manager.findData();
+//    manager.deleteData();
+//    manager.displayData();
+//
+//    return 0;
+//}
+
+//#include <iostream>
+//#include <map>
+//#include <string>
+//
+//namespace PersonNamespace {
+//    class Person {
+//    private:
+//        std::string name;
+//        int age;
+//
+//    public:
+//        // Parameterized constructor
+//        Person(const std::string& name, int age) : name(name), age(age) {}
+//
+//        // Getters
+//        std::string getName() const { return name; }
+//        int getAge() const { return age; }
+//
+//        // Display method
+//        void display() const {
+//            std::cout << "Name: " << name << ", Age: " << age << std::endl;
+//        }
+//    };
+//}
+//namespace DataManagerNamespace {
+//    using namespace PersonNamespace; // Use PersonNamespace
+//
+//    class DataManager {
+//    private:
+//        std::map<int, Person> dataMap;
+//
+//    public:
+//        // Function to add data to the map
+//        void addData(int key, const Person& person) {
+//            dataMap.emplace(key, person); // Use emplace to construct Person in place
+//        }
+//
+//        // Function to find data in the map
+//        bool findData(int key) const {
+//            auto it = dataMap.find(key);
+//            if (it != dataMap.end()) {
+//                std::cout << "Found: ";
+//                it->second.display();
+//                return true;
+//            }
+//            else {
+//                std::cout << "Key not found" << std::endl;
+//                return false;
+//            }
+//        }
+//
+//        // Function to delete data from the map
+//        bool deleteData(int key) {
+//            auto it = dataMap.find(key);
+//            if (it != dataMap.end()) {
+//                dataMap.erase(it);
+//                std::cout << "Deleted key: " << key << std::endl;
+//                return true;
+//            }
+//            else {
+//                std::cout << "Key not found" << std::endl;
+//                return false;
+//            }
+//        }
+//
+//        // Function to display all data in the map
+//        void displayData() const {
+//            for (const auto& pair : dataMap) {
+//                std::cout << "Key: " << pair.first << ", ";
+//                pair.second.display();
+//            }
+//        }
+//    };
+//}
+//
+//int main() {
+//    using namespace PersonNamespace;
+//    using namespace DataManagerNamespace;
+//
+//    DataManager manager;
+//    int key, age;
+//    std::string name;
+//
+//    // Taking user input to add data
+//    std::cout << "Enter key: ";
+//    std::cin >> key;
+//    std::cout << "Enter name: ";
+//    std::cin.ignore(); // Clear the newline character from the buffer
+//    std::getline(std::cin, name);
+//    std::cout << "Enter age: ";
+//    std::cin >> age;
+//
+//    // Add data to the map
+//    manager.addData(key, Person(name, age));
+//
+//    // Display all data
+//    manager.displayData();
+//
+//    // Find the specific data
+//    std::cout << "Enter key to find: ";
+//    std::cin >> key;
+//    manager.findData(key);
+//
+//    // Delete the specific data
+//    std::cout << "Enter key to delete: ";
+//    std::cin >> key;
+//    manager.deleteData(key);
+//
+//    // Display all data after deletion
+//    manager.displayData();
+//
+//    return 0;
+//}
+
+//#include <iostream>
+//#include <map>
+//#include <string>
+//using namespace std;
+//
+//class Person {
+//private:
+//    string name;
+//    int age;
+//
+//public:
+//    Person(string name, int age) : name(name), age(age) {}
+//
+//    string getName() const { return name; }
+//    int getAge() const { return age; }
+//
+//    void display() const {
+//        cout << "Name: " << name << ", Age: " << age << endl;
+//    }
+//};
+//
+//class DataManager {
+//private:
+//    map<int, Person> dataMap;
+//
+//public:
+//    void addData() {
+//        int key;
+//        string name;
+//        int age;
+//
+//        cout << "Enter key: ";
+//        cin >> key;
+//        cout << "Enter name: ";
+//        cin.ignore();
+//        getline(cin, name);
+//        cout << "Enter age: ";
+//        cin >> age;
+//
+//        dataMap.emplace(key, Person(name, age));
+//        cout << "Data added successfully.\n";
+//    }
+//
+//    bool findData() const {
+//        int key;
+//        cout << "Enter the key to find: ";
+//        cin >> key;
+//        auto it = dataMap.find(key);
+//        if (it != dataMap.end()) {
+//            cout << "Found - ";
+//            it->second.display();
+//            return true;
+//        }
+//        else {
+//            cout << "Key not found.\n";
+//            return false;
+//        }
+//    }
+//
+//    bool deleteData() {
+//        int key;
+//        cout << "Enter the key to delete: ";
+//        cin >> key;
+//        auto it = dataMap.find(key);
+//        if (it != dataMap.end()) {
+//            dataMap.erase(it);
+//            cout << "Deleted key: " << key << endl;
+//            return true;
+//        }
+//        else {
+//            cout << "Key not found.\n";
+//            return false;
+//        }
+//    }
+//
+//    void displayData() const {
+//        for (const auto& pair : dataMap) {
+//            cout << "Key: " << pair.first << ", ";
+//            pair.second.display();
+//        }
+//    }
+//};
+//
+//int main() {
+//    DataManager manager;
+//    int choice;
+//
+//    while (true) {
+//        cout << "\nMenu:\n";
+//        cout << "1. Add Data\n";
+//        cout << "2. Find Data\n";
+//        cout << "3. Delete Data\n";
+//        cout << "4. Display All Data\n";
+//        cout << "5. Exit\n";
+//        cout << "Enter your choice: ";
+//        cin >> choice;
+//
+//        switch (choice) {
+//        case 1:
+//            manager.addData();
+//            break;
+//        case 2:
+//            manager.findData();
+//            break;
+//        case 3:
+//            manager.deleteData();
+//            break;
+//        case 4:
+//            manager.displayData();
+//            break;
+//        case 5:
+//            return 0;
+//        default:
+//            cout << "Invalid choice. Please try again.\n";
+//        }
+//    }
+//
+//    return 0;
+//}
+
+#include <iostream>
+#include <map>
+#include <string>
+using namespace std;
+
+class Person {
+private:
+    string name;
+    int age;
+
+public:
+    Person(string name, int age) : name(name), age(age) {}
+
+    string getName() const { return name; }
+    int getAge() const { return age; }
+
+    void display() const {
+        cout << "Name: " << name << ", Age: " << age << endl;
+    }
+};
+class DataManager {
+private:
+    map<int, Person> dataMap;
+
+public:
+    void addData(int key, const Person& person) {
+        dataMap.emplace(key, person);
+    }
+
+    void addData() {
+        int key;
+        string name;
+        int age;
+
+        cout << "Enter key: ";
+        cin >> key;
+        cout << "Enter name: ";
+        cin.ignore(); // Clear the newline character from the buffer
+        getline(cin, name);
+        cout << "Enter age: ";
+        cin >> age;
+
+        dataMap.emplace(key, Person(name, age));
+        cout << "Data added successfully.\n";
+    }
+
+    bool findData() const {
+        int key;
+        cout << "Enter the key to find: ";
+        cin >> key;
+        auto it = dataMap.find(key);
+        if (it != dataMap.end()) {
+            cout << "Found - ";
+            it->second.display();
+            return true;
+        }
+        else {
+            cout << "Key not found.\n";
+            return false;
+        }
+    }
+
+    bool deleteData() {
+        int key;
+        cout << "Enter the key to delete: ";
+        cin >> key;
+        auto it = dataMap.find(key);
+        if (it != dataMap.end()) {
+            dataMap.erase(it);
+            cout << "Deleted key: " << key << endl;
+            return true;
+        }
+        else {
+            cout << "Key not found.\n";
+            return false;
+        }
+    }
+
+    void displayData() const {
+        for (const auto& pair : dataMap) {
+            cout << "Key: " << pair.first << ", ";
+            pair.second.display();
+        }
+    }
+};
+
+int main() {
+    DataManager manager;
+    int choice;
+
+    cout << "Do you want to add default data? (1 for Yes, 0 for No): ";
+    cin >> choice;
+
+    if (choice == 1) {
+        // Adding default data
+        manager.addData(1, Person("Alice", 30));
+        manager.addData(2, Person("Bob", 25));
+        manager.addData(3, Person("Charlie", 28));
+        cout << "Default data added successfully.\n";
+    }
+
+    while (true) {
+        cout << "\nMenu:\n";
+        cout << "1. Add Data\n";
+        cout << "2. Find Data\n";
+        cout << "3. Delete Data\n";
+        cout << "4. Display All Data\n";
+        cout << "5. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+        case 1:
+            manager.addData();
+            break;
+        case 2:
+            manager.findData();
+            break;
+        case 3:
+            manager.deleteData();
+            break;
+        case 4:
+            manager.displayData();
+            break;
+        case 5:
+            return 0;
+        default:
+            cout << "Invalid choice. Please try again.\n";
+        }
+    }
+
+    return 0;
+}
